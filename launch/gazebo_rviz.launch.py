@@ -44,17 +44,5 @@ def generate_launch_description():
         output="screen",
     )
 
-    spawn = Node(
-        package="ros_gz_sim",
-        executable="create",
-        arguments=[
-            "-name",
-            "bicycle",
-            "-topic",
-            "robot_description",
-        ],
-        output="screen",
-    )
-
     # Run the nodes
     return LaunchDescription([gazebo, node_robot_state_publisher, spawn_entity])
