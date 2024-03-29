@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="wheels_physical_properties" params="prefix mu1 mu2 kp kd">
+        <!-- Some physical properties. -->
+        <gazebo reference="link_${prefix}_wheel">
+            <mu1 value="${mu1}" />
+            <mu2 value="${mu2}" />
+            <kp value="${kp}" />
+            <kd value="${kd}" />
+            <material>Gazebo/Grey</material>
+        </gazebo>
+    </xacro:macro>
+
+    <xacro:macro name="transmission" params="name">
+        <!-- This makes a connection between a joint and an actuator -->
+        <transmission name="${name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <actuator name="${name}_motor">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+            <joint name="${name}">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+        </transmission>
+    </xacro:macro>
+</robot>

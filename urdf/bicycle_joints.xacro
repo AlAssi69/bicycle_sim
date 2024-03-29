@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="crank_arms_with_pedal_axis" params="prefix reflect">
+        <xacro:fixed_joint name="joint_crank_arms_${prefix}_pedal_axis"
+            parent="link_crank_arms"
+            child="link_${prefix}_pedal_axis"
+            xyz="${reflect*0.070} 0 ${reflect*0.1750}"
+            rpy="0 0 0" />
+    </xacro:macro>
+
+    <xacro:macro name="support_leg_with_wheel_axis" params="prefix reflect">
+        <xacro:revolute_joint name="joint_${prefix}_support_leg_wheel_axis"
+            parent="link_${prefix}_support_leg"
+            child="link_${prefix}_support_wheel_axis"
+            xyz="${reflect*0.105} 0 ${-wheel_radius+support_wheel_radius}"
+            rpy="0 0 0"
+            axis="1 0 0"
+            low="-${PI}"
+            up="${PI}"
+            effort="10"
+            vel="10" />
+    </xacro:macro>
+
+    <xacro:macro name="frame_with_support_leg" params="prefix reflect">
+        <xacro:fixed_joint name="joint_frame_${prefix}_support_leg"
+            parent="link_frame"
+            child="link_${prefix}_support_leg"
+            xyz="0 ${-0.425} ${-0.1}"
+            rpy="0 0 0" />
+    </xacro:macro>
+
+    <!-- TODO: Make sure this doesn't cause problems -->
+    <xacro:macro name="support_wheel_axis_with_wheel"
+        params="prefix reflect">
+        <xacro:fixed_joint name="joint_${prefix}_support_wheel_axis_with_wheel"
+            parent="link_${prefix}_support_wheel_axis"
+            child="link_${prefix}_support_wheel"
+            xyz="0 0 0"
+            rpy="0 0 0" />
+    </xacro:macro>
+
+    <xacro:macro name="pedal_axis_with_pedal"
+        params="prefix reflect">
+        <xacro:revolute_joint name="joint_${prefix}_pedal_axis_with_pedal"
+            parent="link_${prefix}_pedal_axis"
+            child="link_${prefix}_pedal"
+            xyz="${reflect*0.100} 0 0"
+            rpy="0 0 0"
+            axis="1 0 0"
+            low="-${PI}"
+            up="${PI}"
+            effort="10"
+            vel="10" />
+    </xacro:macro>
+</robot>

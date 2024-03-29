@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/bicycle</robotNamespace>
+        </plugin>
+    </gazebo>
+
+    <xacro:wheels_physical_properties
+        prefix="back" mu1="200.0" mu2="100.0" kp="100.0" kd="1.0" />
+    <xacro:wheels_physical_properties
+        prefix="front" mu1="200.0" mu2="100.0" kp="100.0" kd="1.0" />
+
+    <!-- <xacro:transmission name="joint_frame_head_tube" />
+    <xacro:transmission name="joint_fork_front_wheel" />
+    <xacro:transmission name="joint_frame_back_wheel" /> -->
+</robot>

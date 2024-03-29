@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- world-->
+    <!-- <link name="world" /> -->
+
+    <!-- base_link -->
+    <link name="base_link" />
+
+    <!-- <joint name="world_base" type="fixed">
+    <parent link="world" />
+    <child link="base_link" />
+  </joint> -->
+
+    <!--link_frame-->
+
+    <link name="link_frame">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="5"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual_default xyz="${0.006} ${0+0.040} ${-2*wheel_radius-0.05+0.025}"
+            rpy="${3*PI/180} 0 0" stl="link_frame" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${0.006} ${0+0.040} ${-2*wheel_radius-0.05+0.025}"
+            rpy="${3*PI/180} 0 0" stl="link_frame" />
+    </link>
+
+    <!-- link_back_wheel -->
+    <link
+        name="link_back_wheel">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0.04 0.09 0.5" rpy="0 0 0" m="1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual xyz="${-0.1+0.006} 0 0" rpy="0 ${-PI/2} 0"
+            stl="link_back_wheel" r="0" g="0" b="0" a="1" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${-0.1+0.006} 0 0" rpy="0 ${-PI/2} 0" stl="link_back_wheel" />
+    </link>
+
+    <!-- link_front_wheel -->
+    <link
+        name="link_front_wheel">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0.04 0.09 0" rpy="0 0 0" m="2"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual xyz="0 0 0" rpy="0 0 0" stl="link_front_wheel" r="0" g="0" b="0" a="1" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0 0 0" rpy="0 0 0" stl="link_front_wheel" />
+    </link>
+
+    <!-- TODO: This is considered a root link for some reason -->
+    <!-- link_crank_arms -->
+    <link
+        name="link_crank_arms">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual_default xyz="0.080 0 0" rpy="0 0 0" stl="link_crank_arms" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0.080 0 0" rpy="0 0 0" stl="link_crank_arms" />
+    </link>
+
+    <!-- link_left_pedal_axis -->
+    <link
+        name="link_left_pedal_axis">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <!-- TODO: Is this true or I need to flip it? -->
+        <xacro:param_visual_default xyz="${-0.0020} 0 0" rpy="0 ${-PI/2} 0"
+            stl="link_left_pedal_axis" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${-0.0020} 0 0" rpy="0 ${-PI/2} 0" stl="link_left_pedal_axis" />
+    </link>
+
+    <!-- link_right_pedal_axis -->
+    <link
+        name="link_right_pedal_axis">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <!-- TODO: Is this true or I need to flip it? -->
+        <xacro:param_visual_default xyz="${0.0100} 0 0" rpy="0 ${PI/2} 0"
+            stl="link_right_pedal_axis" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${0.0100} 0 0" rpy="0 ${PI/2} 0" stl="link_right_pedal_axis" />
+    </link>
+
+    <!-- link_left_pedal -->
+    <link
+        name="link_left_pedal">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual_default xyz="${+0.082} 0 0" rpy="0 ${-PI/2} 0" stl="link_left_pedal" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${+0.082} 0 0" rpy="0 ${-PI/2} 0" stl="link_left_pedal" />
+    </link>
+
+    <!-- link_right_pedal -->
+    <link
+        name="link_right_pedal">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual_default xyz="${-0.090} 0 0" rpy="0 ${PI/2} 0" stl="link_right_pedal" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="${-0.090} 0 0" rpy="0 ${PI/2} 0" stl="link_right_pedal" />
+    </link>
+
+    <!-- link_fork -->
+    <link
+        name="link_fork">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="1"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <!-- TODO: Adjust xyz values if somthing fails. -->
+        <xacro:param_visual_default xyz="0 0 ${-0.5}" rpy="${PI/2} 0 ${PI}"
+            stl="link_fork" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0 0 ${-0.5}" rpy="${PI/2} 0 ${PI}" stl="link_fork" />
+    </link>
+
+    <!-- link_head_tube -->
+    <link
+        name="link_head_tube">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.5"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual xyz="0 ${0.0250} ${-0.0095}" rpy="${PI/2} 0 ${-PI/2}"
+            stl="link_head_tube"
+            r="0" g="0" b="0" a="1" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0 ${0.0250} ${-0.0095}" rpy="${PI/2} 0 ${-PI/2}"
+            stl="link_head_tube" />
+    </link>
+
+    <!-- link_handlebar -->
+    <link
+        name="link_handlebar">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="3.14159 1.55159 3.14159" m="0.5"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual_default xyz="0 0 0" rpy="${PI/2+10*PI/180} 0 0" stl="link_handlebar" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0 0 0" rpy="${PI/2+10*PI/180} 0 0" stl="link_handlebar" />
+    </link>
+
+    <!-- link_left_support_leg -->
+    <xacro:support_leg
+        prefix="left" reflect="-1" />
+    <!-- link_right_support_leg -->
+    <xacro:support_leg prefix="right" reflect="+1" />
+
+    <!-- link_left_support_wheel_axis -->
+    <xacro:support_wheel_axis
+        prefix="left" reflect="-1" />
+    <!-- link_right_support_wheel_axis -->
+    <xacro:support_wheel_axis prefix="right" reflect="+1" />
+
+    <!-- link_left_support_wheel -->
+    <xacro:support_wheel
+        prefix="left" reflect="-1" z="0" />
+    <!-- link_right_support_wheel -->
+    <xacro:support_wheel prefix="right" reflect="+1" z="+1" />
+
+    <!-- link_seat_post -->
+    <link
+        name="link_seat_post">
+        <!-- Inertial -->
+        <xacro:param_inertial xyz="0 0 0" rpy="1.59 0 0" m="0.5"
+            ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+        <!-- Visual -->
+        <xacro:param_visual xyz="0 ${-0.0750-0.02+0.012} ${-0.02-0.025}"
+            rpy="${PI/2} ${27.5*PI/180} ${-PI/2}"
+            stl="link_seat_post"
+            r="0" g="0" b="0" a="1" />
+        <!-- Collision -->
+        <xacro:param_collision xyz="0 ${-0.0750-0.02+0.012} ${-0.02-0.025}"
+            rpy="${PI/2} ${27.5*PI/180} ${-PI/2}" stl="link_seat_post" />
+    </link>
+</robot>

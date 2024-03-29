@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Moving this, make the whole bicycle moves (not the base_link though)-->
+    <!-- joint_base_frame-->
+    <xacro:fixed_joint
+        name="joint_base_frame"
+        parent="base_link"
+        child="link_frame"
+        xyz="0 0 ${wheel_radius+0.1}"
+        rpy="0 0 0" />
+
+    <!-- joint_crank_arms_left_pedal_axis -->
+    <xacro:crank_arms_with_pedal_axis prefix="left" reflect="-1" />
+    <!-- joint_crank_arms_right_pedal_axis -->
+    <xacro:crank_arms_with_pedal_axis
+        prefix="right" reflect="+1" />
+
+    <!-- joint_left_support_leg_wheel_axis -->
+    <xacro:support_leg_with_wheel_axis prefix="left" reflect="-1" />
+    <!-- joint_right_support_leg_wheel_axis -->
+    <xacro:support_leg_with_wheel_axis
+        prefix="right" reflect="+1" />
+
+    <!-- joint_frame_crank_arms -->
+    <xacro:revolute_joint name="joint_frame_crank_arms"
+        parent="link_frame"
+        child="link_crank_arms"
+        xyz="0 -0.100 -0.050"
+        rpy="0 0 0"
+        axis="1 0 0"
+        low="-${PI}"
+        up="${PI}"
+        effort="10"
+        vel="10" />
+
+    <!-- joint_frame_right_support_leg -->
+    <xacro:frame_with_support_leg prefix="left" reflect="-1" />
+    <!-- joint_frame_right_support_leg -->
+    <xacro:frame_with_support_leg
+        prefix="right" reflect="+1" />
+
+    <!-- joint_frame_head_tube -->
+    <xacro:revolute_joint name="joint_frame_head_tube"
+        parent="link_frame"
+        child="link_head_tube"
+        xyz="0 ${0.320} ${0.340}"
+        rpy="${20*PI/180} 0 0"
+        axis="0 0 1"
+        low="-${PI/2}"
+        up="${PI/2}"
+        effort="10"
+        vel="10" />
+
+    <!-- joint_frame_seat_post -->
+    <xacro:fixed_joint name="joint_frame_seat_post"
+        parent="link_frame"
+        child="link_seat_post"
+        xyz="0 ${-0.175} ${+0.150}"
+        rpy="0 0 0" />
+
+    <!-- joint_frame_back_wheel -->
+    <xacro:continuous_joint name="joint_frame_back_wheel"
+        parent="link_frame"
+        child="link_back_wheel"
+        xyz="0 ${-0.425} ${-wheel_radius/2+0.03}"
+        rpy="0 0 0"
+        axis="1 0 0"
+    />
+
+    <!-- joint_head_tube_handlebar -->
+    <xacro:fixed_joint name="joint_head_tube_handlebar"
+        parent="link_head_tube"
+        child="link_handlebar"
+        xyz="0 ${0.015+0.040} ${0.040-0.015}"
+        rpy="0 0 0" />
+
+    <!-- joint_head_tube_fork -->
+    <xacro:fixed_joint name="joint_head_tube_fork"
+        parent="link_head_tube"
+        child="link_fork"
+        xyz="0 0 0"
+        rpy="0 0 0" />
+
+    <!-- joint_fork_front_wheel -->
+    <xacro:continuous_joint name="joint_fork_front_wheel"
+        parent="link_fork"
+        child="link_front_wheel"
+        xyz="0 ${-0.030} ${-0.46850}"
+        rpy="${-20*PI/180} 0 0"
+        axis="1 0 0"
+    />
+
+    <!-- joint_left_support_wheel_axis_with_wheel -->
+    <xacro:support_wheel_axis_with_wheel prefix="left" reflect="-1" />
+    <!-- joint_right_support_wheel_axis_with_wheel -->
+    <xacro:support_wheel_axis_with_wheel
+        prefix="right" reflect="+1" />
+
+    <!-- joint_left_pedal_axis_with_pedal -->
+    <xacro:pedal_axis_with_pedal prefix="left" reflect="-1" />
+    <!-- joint_right_pedal_axis_with_pedal -->
+    <xacro:pedal_axis_with_pedal
+        prefix="right" reflect="+1" />
+</robot>

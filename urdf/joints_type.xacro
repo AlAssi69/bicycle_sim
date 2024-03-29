@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="fixed_joint" params="name parent child xyz rpy">
+        <joint name="${name}" type="fixed">
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="revolute_joint"
+        params="name parent child xyz rpy axis low up effort vel">
+        <joint name="${name}" type="revolute">
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+            <axis xyz="${axis}" />
+            <limit lower="${low}" upper="${up}" effort="${effort}" velocity="${vel}" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="continuous_joint"
+        params="name parent child xyz rpy axis ">
+        <joint name="${name}" type="continuous">
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <parent link="${parent}" />
+            <child link="${child}" />
+            <axis xyz="${axis}" />
+        </joint>
+    </xacro:macro>
+</robot>
