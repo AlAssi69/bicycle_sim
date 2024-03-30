@@ -12,7 +12,6 @@ pkg_name = "bicycle_sim"
 
 
 def generate_launch_description():
-
     # Use xacro to process the file
     urdf_path = "urdf/bicycle.urdf.xacro"
     xacro_file = os.path.join(get_package_share_directory(pkg_name), urdf_path)
