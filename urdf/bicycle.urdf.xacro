@@ -37,7 +37,7 @@
   <!-- Here, we link Gazebo to the ROS library. -->
   <!-- <xacro:include filename="gazebo_ros.xacro" /> -->
   <!-- GAZEBO COLORS -->
-  <xacro:include filename="gazebo_material.xacro" />
+  <xacro:include filename="gazebo_config.xacro" />
 
 
   <!-- ====================LiDAR SANNER=================== -->
