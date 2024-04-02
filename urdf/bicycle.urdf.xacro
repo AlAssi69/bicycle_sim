@@ -3,7 +3,7 @@
 
   <!-- TODO: Calculate the inertia matrix -->
   <!-- TODO: Make sure joints type are valid for simulation (Gazebo) -->
-  <!-- TODO: Add the right material for each link in Gazebo -->
+  <!-- TODO: Simpler collision -->
 
   <!-- ========================MACROS======================== -->
   <!-- PROPERTIES -->

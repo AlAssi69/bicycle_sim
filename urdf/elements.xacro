@@ -17,6 +17,7 @@
         name="param_material" params="r g b a">
         <material name="param_color">
             <!-- TODO: Fix the color issue -->
+            <!-- *FIXED: It turned out the problem was Gazebo, not RViz -->
             <color rgba="${r/255} ${g/255} ${b/255} ${a}" />
         </material>
     </xacro:macro>
