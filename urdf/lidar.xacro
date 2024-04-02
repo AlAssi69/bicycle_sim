@@ -43,8 +43,8 @@
     <xacro:fixed_joint name="base_lidar_joint" parent="lidar_base_link" child="link_lidar"
         xyz="-.02 0 0.04" rpy="0 0 1.57" />
 
-    <!-- lidar plugin -->
-    <gazebo reference="lidar">
+    <!-- link_lidar plugin -->
+    <gazebo reference="link_lidar">
         <sensor type="ray" name="head_hokuyo_sensor">
             <pose>0 0 0 0 0 0</pose>
             <!-- to display the rays of the laser  -->
@@ -76,7 +76,7 @@
             </ray>
             <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
                 <topicName>/bicycle/lidar/scan</topicName>
-                <frameName>lidar</frameName>
+                <frameName>link_lidar</frameName>
             </plugin>
         </sensor>
     </gazebo>
