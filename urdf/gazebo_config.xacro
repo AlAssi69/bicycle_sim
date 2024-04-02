@@ -17,6 +17,66 @@
         <material>Gazebo/Turquoise</material>
     </gazebo>
 
+    <gazebo reference="link_fork">
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="link_head_tube">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_handlebar">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_crank_arms">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_left_support_wheel_axis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_right_support_wheel_axis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_left_support_wheel">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_right_support_wheel">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_left_support_leg">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_right_support_leg">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="link_seat_post">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_left_pedal_axis">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_right_pedal_axis">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_left_pedal">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_right_pedal">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
     <gazebo reference="link_back_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
