@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="link_left_support_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="1e-3" />
+        <mu2 value="1e-3" />
+    </gazebo>
+
+    <gazebo reference="link_right_support_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="1e-3" />
+        <mu2 value="1e-3" />
+    </gazebo>
+
+    <gazebo reference="link_frame">
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="link_back_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_front_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="link_lidar">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="lidar_base_link">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+</robot>
