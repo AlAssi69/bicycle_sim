@@ -43,7 +43,7 @@ def generate_launch_description():
     )
 
     # Set the path to the world file
-    world_file_name = "obstacles_world.world"
+    world_file_name = "obstacles.world"
     world_path = os.path.join(pkg_share_directory, "worlds", world_file_name)
 
     # Gazebo

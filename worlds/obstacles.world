@@ -87,7 +87,7 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <model name='obstacels_world_2'>
+    <model name='obstacles_world_2'>
       <pose>-6.7485 4.37506 0 0 -0 0</pose>
       <link name='Wall_0'>
         <collision name='Wall_0_Collision'>
@@ -1278,7 +1278,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='obstacels_world_2'>
+      <model name='obstacles_world_2'>
         <pose>-6.7485 4.37506 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='Wall_0'>
