@@ -9,12 +9,26 @@ import xacro
 
 # Specify the name of the package
 pkg_name = "bicycle_sim"
+pkg_share_directory = get_package_share_directory(pkg_name)
+
+
+def rviz2():
+    # RViz2 config
+    config_path = "rviz/rviz_config.rviz"
+    rvizconfig = os.path.join(get_package_share_directory(pkg_name), config_path)
+
+    return Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        arguments=["-d" + rvizconfig],
+    )
 
 
 def generate_launch_description():
     # Use xacro to process the file
     urdf_path = "urdf/bicycle.urdf.xacro"
-    xacro_file = os.path.join(get_package_share_directory(pkg_name), urdf_path)
+    xacro_file = os.path.join(pkg_share_directory, urdf_path)
     robot_description_raw = xacro.process_file(xacro_file).toxml()
 
     # Configure the nodes
@@ -27,6 +41,10 @@ def generate_launch_description():
             {"use_sim_time": True},
         ],
     )
+
+    # Set the path to the world file
+    world_file_name = "obstacles_world.world"
+    world_path = os.path.join(pkg_share_directory, "worlds", world_file_name)
 
     # Gazebo
     gazebo = IncludeLaunchDescription(
