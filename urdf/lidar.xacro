@@ -20,8 +20,8 @@
         </inertial>
     </link>
 
-    <!-- lidar_link -->
-    <link name="lidar_link">
+    <!-- link_lidar -->
+    <link name="link_lidar">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.001"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -40,7 +40,7 @@
         xyz="0 0.41 0.25" rpy="0 0 0" />
 
     <!-- base_lidar_joint -->
-    <xacro:fixed_joint name="base_lidar_joint" parent="lidar_base_link" child="lidar_link"
+    <xacro:fixed_joint name="base_lidar_joint" parent="lidar_base_link" child="link_lidar"
         xyz="-.02 0 0.04" rpy="0 0 1.57" />
 
     <!-- lidar plugin -->
