@@ -42,6 +42,7 @@ def generate_launch_description():
         ],
     )
 
+    # RViz2 node
     node_rviz2 = rviz2()
 
     # Set the path to the world file
@@ -56,6 +57,7 @@ def generate_launch_description():
                 "/gazebo.launch.py",
             ]
         ),
+        #! launch_arguments={"world": world_path}.items(),
     )
 
     # Spawn service
