@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- TODO: Naming convention -->
     <!-- lidar_base_link -->
     <link name="lidar_base_link">
         <visual>
@@ -12,6 +13,7 @@
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="0.1" />
+            <!-- TODO: What's this? -->
             <box_inertia m="0.01" x="0.05" y="0.05" z="0.001" />
             <inertia
                 ixx="1e-6" ixy="0.0" ixz="0.0"
@@ -35,6 +37,14 @@
         <xacro:param_collision xyz="-0.037 0.055 -0.064" rpy="0 0 0" stl="lidar" />
     </link>
 
+    <gazebo reference="link_lidar">
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+    <gazebo reference="lidar_base_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     <!-- frame_lidar_joint -->
     <xacro:fixed_joint name="frame_lidar_joint" parent="link_frame" child="lidar_base_link"
         xyz="0 0.41 0.25" rpy="0 0 0" />
@@ -45,37 +55,30 @@
 
     <!-- link_lidar plugin -->
     <gazebo reference="link_lidar">
-        <sensor type="ray" name="head_hokuyo_sensor">
+        <sensor name="laser" type="ray">
             <pose>0 0 0 0 0 0</pose>
-            <!-- to display the rays of the laser  -->
             <visualize>true</visualize>
-            <update_rate>20</update_rate>
+            <update_rate>10</update_rate>
             <ray>
                 <scan>
                     <horizontal>
-                        <samples>720</samples>
+                        <samples>360</samples>
                         <resolution>1</resolution>
-                        <min_angle>-1.570796</min_angle>
-                        <max_angle>1.570796</max_angle>
+                        <min_angle>-3.1415</min_angle>
+                        <max_angle>3.1415</max_angle>
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.10</min>
-                    <max>10.0</max>
+                    <min>0.5</min>
+                    <max>10</max>
                     <resolution>0.01</resolution>
                 </range>
-                <noise>
-                    <!-- Noise parameters based on published spec for Hokuyo laser
-             achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-             stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-             reading. -->
-                    <type>gaussian</type>
-                    <mean>0.0</mean>
-                    <stddev>0.01</stddev>
-                </noise>
             </ray>
-            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-                <topicName>/bicycle/lidar/scan</topicName>
+            <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>~/out:=bicycle/scan </argument>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
                 <frameName>link_lidar</frameName>
             </plugin>
         </sensor>
