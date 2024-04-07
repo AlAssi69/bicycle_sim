@@ -43,4 +43,7 @@
   <!-- ====================LiDAR SANNER=================== -->
   <xacro:include filename="lidar.xacro" />
 
+  <!-- ====================CAMERA=================== -->
+  <xacro:include filename="camera.xacro" />
+
 </robot>
