@@ -85,12 +85,4 @@
         <material>Gazebo/Black</material>
     </gazebo>
 
-    <gazebo reference="link_lidar">
-        <material>Gazebo/Black</material>
-    </gazebo>
-
-    <gazebo reference="lidar_base_link">
-        <material>Gazebo/Red</material>
-    </gazebo>
-
 </robot>
