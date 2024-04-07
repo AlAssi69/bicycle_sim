@@ -42,6 +42,7 @@ def generate_launch_description():
         ],
     )
 
+    # RViz2 node
     node_rviz2 = rviz2()
 
     # Set the path to the world file
@@ -52,8 +53,11 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
-                os.path.join(get_package_share_directory("gazebo_ros"), "launch"),
-                "/gazebo.launch.py",
+                os.path.join(
+                    get_package_share_directory("gazebo_ros"),
+                    "launch",
+                    "gazebo.launch.py",
+                ),
             ]
         ),
     )
