@@ -1,19 +1,61 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- world-->
-    <!-- <link name="world" /> -->
+    <xacro:macro
+        name="support_leg" params="prefix reflect">
+        <link name="link_${prefix}_support_leg">
+            <!-- Inertial -->
+            <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.5"
+                ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+            <!-- Visual -->
+            <xacro:param_visual xyz="${reflect*0.215} ${-reflect*0.018} ${-0.12}"
+                rpy="${-PI/2} 0 ${reflect*PI/2}" stl="link_${prefix}_support_leg"
+                r="0" g="0" b="0" a="1" />
+            <!-- Collision -->
+            <xacro:param_collision xyz="${reflect*0.215} ${-reflect*0.018} ${-0.12}"
+                rpy="1.57 ${PI} ${-reflect*PI/2}" stl="link_${prefix}_support_leg" />
+        </link>
+    </xacro:macro>
+
+    <xacro:macro
+        name="support_wheel_axis" params="prefix reflect">
+        <link name="link_${prefix}_support_wheel_axis">
+            <!-- Inertial -->
+            <xacro:param_inertial xyz="0 0 0" rpy="3.14159 1.55159 3.14159" m="0.5"
+                ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+            <!-- Visual -->
+            <!-- TODO: Make sure it fits with support wheels-->
+            <xacro:param_visual xyz="${reflect*0.035} 0 0" rpy="0 ${-reflect*PI/2} 0"
+                stl="link_${prefix}_support_wheel_axis"
+                r="0" g="0" b="0" a="1" />
+            <!-- Collision -->
+            <xacro:param_collision xyz="${reflect*0.035} 0 0" rpy="0 ${-reflect*PI/2} 0"
+                stl="link_${prefix}_support_wheel_axis" />
+        </link>
+    </xacro:macro>
+
+    <xacro:macro
+        name="support_wheel" params="prefix reflect z">
+        <link name="link_${prefix}_support_wheel">
+            <!-- Inertial -->
+            <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="1"
+                ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
+            <!-- Visual -->
+            <xacro:param_visual xyz="${reflect*0.035} 0 0" rpy="0 0 ${z*PI}"
+                stl="link_${prefix}_support_wheel"
+                r="255" g="255" b="255" a="1" />
+            <!-- Collision -->
+            <xacro:param_collision xyz="${reflect*0.035} 0 0" rpy="0 0 ${z*PI}"
+                stl="link_${prefix}_support_wheel" />
+        </link>
+    </xacro:macro>
+
+    <!-- ===================================================================== -->
 
     <!-- base_link -->
     <link name="base_link" />
 
-    <!-- <joint name="world_base" type="fixed">
-    <parent link="world" />
-    <child link="base_link" />
-  </joint> -->
-
     <!--link_frame-->
-
     <link name="link_frame">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="5"
@@ -51,7 +93,7 @@
         <xacro:param_collision xyz="0 0 0" rpy="0 0 0" stl="link_front_wheel" />
     </link>
 
-    <!-- TODO: This is considered a root link for some reason -->
+    <!-- TODO: This was? considered a root link for some reason -->
     <!-- link_crank_arms -->
     <link
         name="link_crank_arms">
@@ -158,20 +200,17 @@
     </link>
 
     <!-- link_left_support_leg -->
-    <xacro:support_leg
-        prefix="left" reflect="-1" />
+    <xacro:support_leg prefix="left" reflect="-1" />
     <!-- link_right_support_leg -->
     <xacro:support_leg prefix="right" reflect="+1" />
 
     <!-- link_left_support_wheel_axis -->
-    <xacro:support_wheel_axis
-        prefix="left" reflect="-1" />
+    <xacro:support_wheel_axis prefix="left" reflect="-1" />
     <!-- link_right_support_wheel_axis -->
     <xacro:support_wheel_axis prefix="right" reflect="+1" />
 
     <!-- link_left_support_wheel -->
-    <xacro:support_wheel
-        prefix="left" reflect="-1" z="0" />
+    <xacro:support_wheel prefix="left" reflect="-1" z="0" />
     <!-- link_right_support_wheel -->
     <xacro:support_wheel prefix="right" reflect="+1" z="+1" />
 

@@ -9,21 +9,8 @@
   <!-- PROPERTIES -->
   <xacro:include filename="properties.xacro" />
 
-  <!-- JOINTS TYPE-->
-  <xacro:include filename="joints_type.xacro" />
-
   <!-- ELEMENTS -->
   <xacro:include filename="elements.xacro" />
-
-  <!-- BICYCLE JOINTS -->
-  <xacro:include filename="bicycle_joints.xacro" />
-
-  <!-- BICYCLE LINKS -->
-  <xacro:include filename="bicycle_links.xacro" />
-
-  <!-- GAZEBO -->
-  <!-- <xacro:include filename="gazebo.xacro" /> -->
-
 
   <!-- ========================LINKS======================== -->
   <xacro:include filename="links.xacro" />
@@ -34,9 +21,6 @@
 
 
   <!-- ========================GAZEBO======================== -->
-  <!-- Here, we link Gazebo to the ROS library. -->
-  <!-- <xacro:include filename="gazebo_ros.xacro" /> -->
-  <!-- GAZEBO COLORS -->
   <xacro:include filename="gazebo_config.xacro" />
 
 
@@ -44,6 +28,6 @@
   <xacro:include filename="lidar.xacro" />
 
   <!-- ====================CAMERA=================== -->
-  <xacro:include filename="camera.xacro" />
+  <!-- <xacro:include filename="camera.xacro" /> -->
 
 </robot>
