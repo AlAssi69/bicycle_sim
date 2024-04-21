@@ -20,9 +20,12 @@
   <xacro:include filename="joints.xacro" />
 
 
+  <!-- ========================ros2_control======================== -->
+  <!-- <xacro:include filename="ros2_control.xacro" /> -->
+
+
   <!-- ========================GAZEBO======================== -->
   <xacro:include filename="gazebo_config.xacro" />
-  <!-- <xacro:include filename="gazebo_control.xacro" /> -->
 
 
   <!-- ====================LiDAR SANNER=================== -->
