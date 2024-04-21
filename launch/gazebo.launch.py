@@ -70,5 +70,24 @@ def generate_launch_description():
         output="screen",
     )
 
+    # Controller spawner
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner.py",
+        arguments=["joint_broad"],
+    )
+    # bi_cont_spawner = Node(
+    #     package="controller_manager",
+    #     executable="spawner.py",
+    #     arguments=["bi_cont"],
+    # )
+
     # Run the nodes
-    return LaunchDescription([gazebo, node_robot_state_publisher, spawn_entity])
+    return LaunchDescription(
+        [
+            gazebo,
+            node_robot_state_publisher,
+            spawn_entity,
+            joint_broad_spawner,
+        ]
+    )
