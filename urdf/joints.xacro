@@ -9,8 +9,7 @@
         </joint>
     </xacro:macro>
 
-    <xacro:macro name="revolute_joint"
-        params="name parent child xyz rpy axis low up effort vel">
+    <xacro:macro name="revolute_joint" params="name parent child xyz rpy axis low up effort vel">
         <joint name="${name}" type="revolute">
             <origin xyz="${xyz}" rpy="${rpy}" />
             <parent link="${parent}" />
@@ -20,8 +19,7 @@
         </joint>
     </xacro:macro>
 
-    <xacro:macro name="continuous_joint"
-        params="name parent child xyz rpy axis ">
+    <xacro:macro name="continuous_joint" params="name parent child xyz rpy axis ">
         <joint name="${name}" type="continuous">
             <origin xyz="${xyz}" rpy="${rpy}" />
             <parent link="${parent}" />
@@ -30,7 +28,9 @@
         </joint>
     </xacro:macro>
 
+
     <!-- ===================================================================== -->
+
 
     <xacro:macro name="crank_arms_with_pedal_axis" params="prefix reflect">
         <xacro:fixed_joint name="joint_crank_arms_${prefix}_pedal_axis"
@@ -62,8 +62,7 @@
     </xacro:macro>
 
     <!-- TODO: Make sure this doesn't cause problems -->
-    <xacro:macro name="support_wheel_axis_with_wheel"
-        params="prefix reflect">
+    <xacro:macro name="support_wheel_axis_with_wheel" params="prefix reflect">
         <xacro:fixed_joint name="joint_${prefix}_support_wheel_axis_with_wheel"
             parent="link_${prefix}_support_wheel_axis"
             child="link_${prefix}_support_wheel"
@@ -71,8 +70,7 @@
             rpy="0 0 0" />
     </xacro:macro>
 
-    <xacro:macro name="pedal_axis_with_pedal"
-        params="prefix reflect">
+    <xacro:macro name="pedal_axis_with_pedal" params="prefix reflect">
         <xacro:revolute_joint name="joint_${prefix}_pedal_axis_with_pedal"
             parent="link_${prefix}_pedal_axis"
             child="link_${prefix}_pedal"
@@ -85,12 +83,13 @@
             vel="10" />
     </xacro:macro>
 
+
     <!-- ===================================================================== -->
+
 
     <!-- Moving this, make the whole bicycle moves (not the base_link though)-->
     <!-- joint_base_frame-->
-    <xacro:fixed_joint
-        name="joint_base_frame"
+    <xacro:fixed_joint name="joint_base_frame"
         parent="base_link"
         child="link_frame"
         xyz="0 0 ${wheel_radius+0.1}"
@@ -99,14 +98,12 @@
     <!-- joint_crank_arms_left_pedal_axis -->
     <xacro:crank_arms_with_pedal_axis prefix="left" reflect="-1" />
     <!-- joint_crank_arms_right_pedal_axis -->
-    <xacro:crank_arms_with_pedal_axis
-        prefix="right" reflect="+1" />
+    <xacro:crank_arms_with_pedal_axis prefix="right" reflect="+1" />
 
     <!-- joint_left_support_leg_wheel_axis -->
     <xacro:support_leg_with_wheel_axis prefix="left" reflect="-1" />
     <!-- joint_right_support_leg_wheel_axis -->
-    <xacro:support_leg_with_wheel_axis
-        prefix="right" reflect="+1" />
+    <xacro:support_leg_with_wheel_axis prefix="right" reflect="+1" />
 
     <!-- joint_frame_crank_arms -->
     <xacro:revolute_joint name="joint_frame_crank_arms"
@@ -123,8 +120,7 @@
     <!-- joint_frame_right_support_leg -->
     <xacro:frame_with_support_leg prefix="left" reflect="-1" />
     <!-- joint_frame_right_support_leg -->
-    <xacro:frame_with_support_leg
-        prefix="right" reflect="+1" />
+    <xacro:frame_with_support_leg prefix="right" reflect="+1" />
 
     <!-- joint_frame_head_tube -->
     <xacro:revolute_joint name="joint_frame_head_tube"
@@ -151,8 +147,7 @@
         child="link_back_wheel"
         xyz="0 ${-0.425} ${-wheel_radius/2+0.03}"
         rpy="0 0 0"
-        axis="1 0 0"
-    />
+        axis="1 0 0" />
 
     <!-- joint_head_tube_handlebar -->
     <xacro:fixed_joint name="joint_head_tube_handlebar"
@@ -174,18 +169,15 @@
         child="link_front_wheel"
         xyz="0 ${-0.030} ${-0.46850}"
         rpy="${-20*PI/180} 0 0"
-        axis="1 0 0"
-    />
+        axis="1 0 0" />
 
     <!-- joint_left_support_wheel_axis_with_wheel -->
     <xacro:support_wheel_axis_with_wheel prefix="left" reflect="-1" />
     <!-- joint_right_support_wheel_axis_with_wheel -->
-    <xacro:support_wheel_axis_with_wheel
-        prefix="right" reflect="+1" />
+    <xacro:support_wheel_axis_with_wheel prefix="right" reflect="+1" />
 
     <!-- joint_left_pedal_axis_with_pedal -->
     <xacro:pedal_axis_with_pedal prefix="left" reflect="-1" />
     <!-- joint_right_pedal_axis_with_pedal -->
-    <xacro:pedal_axis_with_pedal
-        prefix="right" reflect="+1" />
+    <xacro:pedal_axis_with_pedal prefix="right" reflect="+1" />
 </robot>

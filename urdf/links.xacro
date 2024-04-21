@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-    <xacro:macro
-        name="support_leg" params="prefix reflect">
+    <xacro:macro name="support_leg" params="prefix reflect">
         <link name="link_${prefix}_support_leg">
             <!-- Inertial -->
             <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.5"
@@ -17,8 +15,7 @@
         </link>
     </xacro:macro>
 
-    <xacro:macro
-        name="support_wheel_axis" params="prefix reflect">
+    <xacro:macro name="support_wheel_axis" params="prefix reflect">
         <link name="link_${prefix}_support_wheel_axis">
             <!-- Inertial -->
             <xacro:param_inertial xyz="0 0 0" rpy="3.14159 1.55159 3.14159" m="0.5"
@@ -34,8 +31,7 @@
         </link>
     </xacro:macro>
 
-    <xacro:macro
-        name="support_wheel" params="prefix reflect z">
+    <xacro:macro name="support_wheel" params="prefix reflect z">
         <link name="link_${prefix}_support_wheel">
             <!-- Inertial -->
             <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="1"
@@ -50,7 +46,9 @@
         </link>
     </xacro:macro>
 
+
     <!-- ===================================================================== -->
+
 
     <!-- base_link -->
     <link name="base_link" />
@@ -69,8 +67,7 @@
     </link>
 
     <!-- link_back_wheel -->
-    <link
-        name="link_back_wheel">
+    <link name="link_back_wheel">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0.04 0.09 0.5" rpy="0 0 0" m="1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -82,8 +79,7 @@
     </link>
 
     <!-- link_front_wheel -->
-    <link
-        name="link_front_wheel">
+    <link name="link_front_wheel">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0.04 0.09 0" rpy="0 0 0" m="2"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -95,8 +91,7 @@
 
     <!-- TODO: This was? considered a root link for some reason -->
     <!-- link_crank_arms -->
-    <link
-        name="link_crank_arms">
+    <link name="link_crank_arms">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -107,8 +102,7 @@
     </link>
 
     <!-- link_left_pedal_axis -->
-    <link
-        name="link_left_pedal_axis">
+    <link name="link_left_pedal_axis">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -121,8 +115,7 @@
     </link>
 
     <!-- link_right_pedal_axis -->
-    <link
-        name="link_right_pedal_axis">
+    <link name="link_right_pedal_axis">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -135,8 +128,7 @@
     </link>
 
     <!-- link_left_pedal -->
-    <link
-        name="link_left_pedal">
+    <link name="link_left_pedal">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -147,8 +139,7 @@
     </link>
 
     <!-- link_right_pedal -->
-    <link
-        name="link_right_pedal">
+    <link name="link_right_pedal">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -159,8 +150,7 @@
     </link>
 
     <!-- link_fork -->
-    <link
-        name="link_fork">
+    <link name="link_fork">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="1"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -173,8 +163,7 @@
     </link>
 
     <!-- link_head_tube -->
-    <link
-        name="link_head_tube">
+    <link name="link_head_tube">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="0 0 0" m="0.5"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -188,8 +177,7 @@
     </link>
 
     <!-- link_handlebar -->
-    <link
-        name="link_handlebar">
+    <link name="link_handlebar">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="3.14159 1.55159 3.14159" m="0.5"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />
@@ -215,8 +203,7 @@
     <xacro:support_wheel prefix="right" reflect="+1" z="+1" />
 
     <!-- link_seat_post -->
-    <link
-        name="link_seat_post">
+    <link name="link_seat_post">
         <!-- Inertial -->
         <xacro:param_inertial xyz="0 0 0" rpy="1.59 0 0" m="0.5"
             ixx="0.166667" ixy="0" ixz="0" iyy="0.166667" iyz="0" izz="0.166667" />

@@ -46,12 +46,18 @@
     </gazebo>
 
     <!-- frame_lidar_joint -->
-    <xacro:fixed_joint name="frame_lidar_joint" parent="link_frame" child="lidar_base_link"
-        xyz="0 0.41 0.25" rpy="0 0 0" />
+    <xacro:fixed_joint name="frame_lidar_joint"
+        parent="link_frame"
+        child="lidar_base_link"
+        xyz="0 0.41 0.25"
+        rpy="0 0 0" />
 
     <!-- base_lidar_joint -->
-    <xacro:fixed_joint name="base_lidar_joint" parent="lidar_base_link" child="link_lidar"
-        xyz="-.02 0 0.04" rpy="0 0 1.57" />
+    <xacro:fixed_joint name="base_lidar_joint"
+        parent="lidar_base_link"
+        child="link_lidar"
+        xyz="-.02 0 0.04"
+        rpy="0 0 1.57" />
 
     <!-- link_lidar plugin -->
     <gazebo reference="link_lidar">

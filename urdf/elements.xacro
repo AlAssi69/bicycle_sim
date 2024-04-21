@@ -6,24 +6,21 @@
         </geometry>
     </xacro:macro>
 
-    <xacro:macro
-        name="default_material">
+    <xacro:macro name="default_material">
         <material name="default_color">
             <color rgba="${48/255} ${213/255} ${200/255} 1" />
         </material>
     </xacro:macro>
 
-    <xacro:macro
-        name="param_material" params="r g b a">
+    <xacro:macro name="param_material" params="r g b a">
         <material name="param_color">
             <!-- TODO: Fix the color issue -->
-            <!-- *FIXED: It turned out the problem was Gazebo, not RViz -->
+            <!-- *FIXED: It turned out the problem was Gazebo, not RViz? -->
             <color rgba="${r/255} ${g/255} ${b/255} ${a}" />
         </material>
     </xacro:macro>
 
-    <xacro:macro
-        name="param_inertial" params="xyz rpy m ixx ixy ixz iyy iyz izz">
+    <xacro:macro name="param_inertial" params="xyz rpy m ixx ixy ixz iyy iyz izz">
         <inertial>
             <origin xyz="${xyz}" rpy="${rpy}" />
             <mass value="${m}" />
@@ -32,7 +29,6 @@
                 izz="${izz}" />
         </inertial>
     </xacro:macro>
-
 
     <xacro:macro name="param_visual_default"
         params="xyz rpy stl">
@@ -52,8 +48,7 @@
         </visual>
     </xacro:macro>
 
-    <xacro:macro
-        name="param_collision" params="xyz rpy stl">
+    <xacro:macro name="param_collision" params="xyz rpy stl">
         <collision>
             <origin xyz="${xyz}" rpy="${rpy}" />
             <xacro:param_geometry stl="${stl}" />
