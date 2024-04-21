@@ -22,6 +22,7 @@
 
   <!-- ========================GAZEBO======================== -->
   <xacro:include filename="gazebo_config.xacro" />
+  <!-- <xacro:include filename="gazebo_control.xacro" /> -->
 
 
   <!-- ====================LiDAR SANNER=================== -->
