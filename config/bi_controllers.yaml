@@ -3,16 +3,16 @@ controller_manager:
     update_rate: 30
     use_sim_time: true
 
-    bi_cont:
-      type: diff_drive_controller/DiffDriveController # TODO: I must write this to suit the bicycle
+    # bi_cont:
+    #   type: diff_drive_controller/DiffDriveController # TODO: I must write this to suit the bicycle
 
     # like joint_state_publisher for robot_state_publisher to work
     joint_brod:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-bi_cont:
-  ros__parameters:
-    publish_rate: 30.0 # or higher
+# bi_cont:
+#   ros__parameters:
+#     publish_rate: 30.0 # or higher
     # base_frame: base_link link_frame
     # head_tube_name: joint_frame_head_tube
     # back_wheel_name: joint_frame_back_wheel
