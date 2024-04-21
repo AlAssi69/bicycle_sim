@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- TODO: Edit vel and eff limits, and the actual limits -->
     <xacro:macro name="fixed_joint" params="name parent child xyz rpy">
         <joint name="${name}" type="fixed">
             <origin xyz="${xyz}" rpy="${rpy}" />

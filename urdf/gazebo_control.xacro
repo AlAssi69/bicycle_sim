@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <!-- TODO: teleop_twist_keyboard for bicycle (Teleoperation) -->
+    <!-- TODO: teleop_twist_keyboard for bicycle (Teleoperation)? -->
     <gazebo>
         <plugin name="bi_drive" filename="bicycle_drive">
             <!-- plugin settings -->
