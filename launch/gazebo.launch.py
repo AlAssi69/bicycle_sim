@@ -72,12 +72,12 @@ def generate_launch_description():
     # Controller spawner
     joint_broad_spawner = Node(
         package="controller_manager",
-        executable="spawner.py",
+        executable="spawner",
         arguments=["joint_broad"],
     )
     # bi_cont_spawner = Node(
     #     package="controller_manager",
-    #     executable="spawner.py",
+    #     executable="spawner",
     #     arguments=["bi_cont"],
     # )
 
