@@ -6,7 +6,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 import xacro
 
-# Humble
 # Specify the name of the package
 pkg_name = "bicycle_sim"
 pkg_share_directory = get_package_share_directory(pkg_name)
