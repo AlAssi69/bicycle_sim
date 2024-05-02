@@ -69,24 +69,32 @@ def generate_launch_description():
         output="screen",
     )
 
+    # Controller Manager
+    controller_manager = Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+    )
+
     # Controller spawner
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_broad"],
     )
-    # bi_cont_spawner = Node(
-    #     package="controller_manager",
-    #     executable="spawner",
-    #     arguments=["bi_cont"],
-    # )
+    bi_cont_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["bi_cont"],
+    )
 
     # Run the nodes
     return LaunchDescription(
         [
+            # controller_manager,
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
             joint_broad_spawner,
+            bi_cont_spawner,
         ]
     )

@@ -2,6 +2,7 @@
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <!-- TODO: teleop_twist_keyboard for bicycle (Teleoperation)? -->
     <!-- TODO: and do a remap for topics -->
+
     <!-- Hardware Interface -->
     <!-- type="sensor" "actuator" -->
     <ros2_control name="GazeboSystem" type="system">
@@ -19,7 +20,8 @@
             <state_interface name="position" />
         </joint>
 
-        <joint name="joint_frame_head_tube">
+        <!-- <joint name="joint_frame_head_tube"> -->
+        <joint name="joint_fork_front_wheel">
             <command_interface name="position">
                 <param name="initial_value">0.0</param>
                 <param name="min">-10</param>
