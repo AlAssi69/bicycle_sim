@@ -15,19 +15,24 @@ endif()
 
 # find dependencies
 set(THIS_PACKAGE_INCLUDE_DEPENDS
+  controller_interface
+  gazebo_ros
+  generate_parameter_library
+  geometry_msgs
   hardware_interface
   pluginlib
   rclcpp
   rclcpp_lifecycle
   rclpy
   rcutils
-  tf2_ros
-  geometry_msgs
-  sensor_msgs
-  gazebo_ros
-  std_msgs
-  urdf
+  realtime_tools
   rosidl_default_generators
+  sensor_msgs
+  std_msgs
+  std_srvs
+  steering_controllers_library
+  tf2_ros
+  urdf
 )
 
 # find dependencies
@@ -35,6 +40,16 @@ find_package(ament_cmake REQUIRED)
 foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
   find_package(${Dependency} REQUIRED)
 endforeach()
+
+# generate_parameter_library(bicycle_steering_controller_parameters
+#   src/bicycle_steering_controller.yaml
+# )
+
+# add_library(
+#   bicycle_steering_controller
+#   SHARED
+#   src/bicycle_steering_controller.cpp
+# )
 
 ament_export_dependencies(rosidl_default_runtime)
 
