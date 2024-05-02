@@ -4,6 +4,7 @@ controller_manager:
     use_sim_time: true
 
     # TODO: I must write this to suit the bicycle. It must contain the topic cmd_vel
+    # TODO: Avaliable in ROS 2 Humble
     # bi_cont:
     #   type: diff_drive_controller/DiffDriveController
 
