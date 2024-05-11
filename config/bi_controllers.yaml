@@ -1,28 +1,27 @@
 controller_manager:
   ros__parameters:
-    update_rate: 30
+    update_rate: 100
     use_sim_time: true
 
-    # TODO: I must write this to suit the bicycle. It must contain the topic cmd_vel
-    bi_cont:
-      type: bicycle_steering_controller/BicycleSteeringController
+    # TODO: I must edit this to suit the bicycle. Check the cmd_vel topic to remap
+    # bicycle_controller:
+    # type: bicycle_steering_controller/BicycleSteeringController
 
     # like joint_state_publisher for robot_state_publisher to work
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
+# bicycle_controller:
+#   ros__parameters:
+#     reference_timeout: 2.0
+#     front_steering: true
+#     open_loop: false
+#     velocity_rolling_window_size: 10
+#     position_feedback: false
+#     use_stamped_vel: false
+#     rear_wheels_names: [joint_frame_back_wheel]
+#     # front_wheels_names: [joint_frame_head_tube]
+#     front_wheels_names: [joint_fork_front_wheel]
 
-bi_cont:
-  ros__parameters:
-    reference_timeout: 2.0
-    front_steering: true
-    open_loop: false
-    velocity_rolling_window_size: 10
-    position_feedback: false
-    use_stamped_vel: false
-    rear_wheels_names: [joint_frame_back_wheel]
-    # front_wheels_names: [joint_frame_head_tube]
-    front_wheels_names: [joint_fork_front_wheel]
-
-    wheelbase: 0.78 #779 mm
-    front_wheel_radius: 0.53 #526 mm
-    rear_wheel_radius: 0.53
+#     wheelbase: 0.78 #779 mm
+#     front_wheel_radius: 0.53 #526 mm
+#     rear_wheel_radius: 0.53

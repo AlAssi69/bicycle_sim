@@ -5,9 +5,11 @@
 
     <!-- Hardware Interface -->
     <!-- type="sensor" "actuator" -->
+    <!-- <ros2_control name="GazeboSimSystem" type="system"> -->
     <ros2_control name="GazeboSystem" type="system">
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            <!-- <plugin>gz_ros2_control/GazeboSimSystem</plugin> -->
         </hardware>
 
         <joint name="joint_frame_back_wheel">
@@ -17,26 +19,44 @@
             </command_interface>
 
             <state_interface name="velocity" />
-            <state_interface name="position" />
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
 
         <!-- <joint name="joint_frame_head_tube"> -->
         <joint name="joint_fork_front_wheel">
             <command_interface name="position">
-                <param name="initial_value">0.0</param>
                 <param name="min">-10</param>
                 <param name="max">+10</param>
             </command_interface>
 
             <state_interface name="velocity" />
-            <state_interface name="position" />
+            <state_interface name="position">
+                <param name="initial_value">0.0</param>
+            </state_interface>
         </joint>
     </ros2_control>
 
+    <!-- This plugins has its own controller manager. -->
+    <!-- No need to run 'ros2 run controller_manager ros2_control_node' -->
+    <!-- <gazebo>
+        <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin"
+            filename="libgz_ros2_control-system">
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <parameters>
+                $(find bicycle_sim)/config/bi_controllers.yaml
+            </parameters>
+            <controller_manager_prefix_node_name>
+                controller_manager
+            </controller_manager_prefix_node_name>
+        </plugin>
+    </gazebo> -->
     <gazebo>
-        <!-- This plugins has its own controller manager. -->
-        <!-- No need to run 'ros2 rusn controller_manager ros2_control_node' -->
-        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
             <parameters>
                 $(find bicycle_sim)/config/bi_controllers.yaml
             </parameters>

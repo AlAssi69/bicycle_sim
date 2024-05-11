@@ -24,6 +24,7 @@ def generate_launch_description():
     node_robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
+        name="robot_state_publisher",
         output="screen",
         parameters=[{"robot_description": robot_description_raw}],
     )
@@ -32,6 +33,7 @@ def generate_launch_description():
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
         name="joint_state_publisher_gui",
+        arguments=[xacro_file],
     )
 
     node_rviz2 = Node(

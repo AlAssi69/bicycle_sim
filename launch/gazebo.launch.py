@@ -11,26 +11,13 @@ pkg_name = "bicycle_sim"
 pkg_share_directory = get_package_share_directory(pkg_name)
 
 
-def rviz2():
-    # RViz2 config
-    config_path = "rviz/rviz_config.rviz"
-    rvizconfig = os.path.join(get_package_share_directory(pkg_name), config_path)
-
-    return Node(
-        package="rviz2",
-        executable="rviz2",
-        name="rviz2",
-        arguments=["-d" + rvizconfig],
-    )
-
-
 def generate_launch_description():
     # Use xacro to process the file
     urdf_path = "urdf/bicycle.urdf.xacro"
     xacro_file = os.path.join(pkg_share_directory, urdf_path)
     robot_description_raw = xacro.process_file(xacro_file).toxml()
 
-    # Configure the nodes
+    # Configure robot_state_publisher
     node_robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -40,13 +27,6 @@ def generate_launch_description():
             {"use_sim_time": True},
         ],
     )
-
-    # RViz2 node
-    node_rviz2 = rviz2()
-
-    # Set the path to the world file
-    world_file_name = "obstacles.world"
-    world_path = os.path.join(pkg_share_directory, "worlds", world_file_name)
 
     # Gazebo
     gazebo = IncludeLaunchDescription(
@@ -61,7 +41,7 @@ def generate_launch_description():
         ),
     )
 
-    # Spawn service
+    # Spawn URDF (the bicycle) service
     spawn_entity = Node(
         package="gazebo_ros",
         executable="spawn_entity.py",
@@ -69,32 +49,19 @@ def generate_launch_description():
         output="screen",
     )
 
-    # Controller Manager
-    controller_manager = Node(
-        package="controller_manager",
-        executable="ros2_control_node",
-    )
-
     # Controller spawner
-    joint_broad_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["joint_broad"],
-    )
-    bi_cont_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["bi_cont"],
-    )
+    # joint_broad_spawner = Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["joint_broad"],
+    # )
 
     # Run the nodes
     return LaunchDescription(
         [
-            # controller_manager,
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
-            joint_broad_spawner,
-            bi_cont_spawner,
+            # joint_broad_spawner,
         ]
     )
