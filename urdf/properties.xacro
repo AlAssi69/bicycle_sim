@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:property name="pkg_name" value="bicycle_sim" />
-    <xacro:property name="PI" value="3.141592654" />
-    <xacro:property name="my_const" value="0.5" />
-    <xacro:property name="wheel_radius" value="${526/2000}" />
-    <xacro:property name="support_wheel_radius" value="${107.41/2000}" />
-</robot>

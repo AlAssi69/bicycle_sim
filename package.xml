@@ -2,48 +2,15 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>bicycle_sim</name>
-  <version>1.0.0</version>
-  <description>Bicycle simulation in Gazebo</description>
-  <maintainer email="smart.teen.12345@gmail.com">Ashraf AlAssi</maintainer>
-  <license>GNU General Public License</license>
+  <version>0.0.1</version>
+  <description>TODO: Package description</description>
+  <maintainer email="ashraf.al.assi.69@gmail.com">Ashraf AlAssi</maintainer>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>rosidl_default_generators</buildtool_depend>
 
-  <depend>control_msgs</depend>
-  <depend>controller_interface</depend>
-  <depend>geometry_msgs</depend>
-  <depend>hardware_interface</depend>
-  <depend>pluginlib</depend>
-  <depend>rclcpp</depend>
-  <depend>rclcpp_lifecycle</depend>
-  <depend>rcutils</depend>
-  <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
-  <depend>std_srvs</depend>
-  <depend>steering_controllers_library</depend>
-  <depend>tf2_ros</depend>
-  <depend>urdf</depend>
-
-  <exec_depend>gz_ros2_control</exec_depend>
-  <exec_depend>joint_state_publisher_gui</exec_depend>
-  <exec_depend>joint_state_broadcaster</exec_depend>
-  <exec_depend>ros_gz_sim</exec_depend>
-  <exec_depend>ros2controlcli</exec_depend>
-  <exec_depend>ros2launch</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>rviz2</exec_depend>
-  <exec_depend>rosidl_default_runtime</exec_depend>
-  <exec_depend>xacro</exec_depend>
-
-  <test_depend>ament_cmake_gmock</test_depend>
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  <test_depend>controller_manager</test_depend>
-  <test_depend>hardware_interface</test_depend>
-  <test_depend>hardware_interface_testing</test_depend>
-  <test_depend>ros2_control_test_assets</test_depend>
-  <member_of_group>rosidl_interface_packages</member_of_group>
 
   <export>
     <build_type>ament_cmake</build_type>

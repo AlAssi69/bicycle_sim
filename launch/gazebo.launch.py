@@ -17,10 +17,11 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_share_directory, urdf_path)
     robot_description_raw = xacro.process_file(xacro_file).toxml()
 
-    # Configure robot_state_publisher
-    node_robot_state_publisher = Node(
+    # rsp
+    rsp_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
+        name="robot_state_publisher",
         output="screen",
         parameters=[
             {"robot_description": robot_description_raw},
@@ -28,8 +29,8 @@ def generate_launch_description():
         ],
     )
 
-    # Gazebo
-    gazebo = IncludeLaunchDescription(
+    # gazebo
+    gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
                 os.path.join(
@@ -49,19 +50,27 @@ def generate_launch_description():
         output="screen",
     )
 
-    # Controller spawner
-    # joint_broad_spawner = Node(
-    #     package="controller_manager",
-    #     executable="spawner",
-    #     arguments=["joint_broad"],
-    # )
+    # joint_state_broadcaster controller
+    joint_broad_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_broad"],
+    )
+
+    # bicycle_steering_controller controller
+    bicycle_steering_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["bicycle_steering_cont"],
+    )
 
     # Run the nodes
     return LaunchDescription(
         [
-            gazebo,
-            node_robot_state_publisher,
+            rsp_node,
+            gazebo_node,
             spawn_entity,
-            # joint_broad_spawner,
+            joint_broad_spawner,
+            bicycle_steering_controller_spawner,
         ]
     )
