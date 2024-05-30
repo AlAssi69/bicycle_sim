@@ -3,7 +3,7 @@
 <package format="3">
   <name>bicycle_sim</name>
   <version>0.0.1</version>
-  <description>TODO: Package description</description>
+  <description>Bicycle Simulation for Graduation Project</description>
   <maintainer email="ashraf.al.assi.69@gmail.com">Ashraf AlAssi</maintainer>
   <license>Apache-2.0</license>
 
