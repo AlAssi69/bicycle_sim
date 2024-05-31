@@ -49,7 +49,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.800000011920929
+    - Alpha: 0.8
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
       Description File: ""
@@ -218,33 +218,24 @@ Visualization Manager:
       Show Names: false
       Tree:
         base_link:
-          base_footprint:
-            {}
+          base_footprint: {}
           frame:
             back_head_tube:
               back_screw:
-                back_wheel:
-                  {}
+                back_wheel: {}
                 left_support_leg:
                   left_support_axis:
-                    left_support_wheel:
-                      {}
+                    left_support_wheel: {}
                 right_support_leg:
                   right_support_axis:
-                    right_support_wheel:
-                      {}
-              seat_stay_left:
-                {}
-              seat_stay_right:
-                {}
+                    right_support_wheel: {}
+              seat_stay_left: {}
+              seat_stay_right: {}
             head_tube:
-              fork_left:
-                {}
-              fork_right:
-                {}
+              fork_left: {}
+              fork_right: {}
               front_screw:
-                front_wheel:
-                  {}
+                front_wheel: {}
       Update Interval: 0
       Value: true
   Enabled: true
