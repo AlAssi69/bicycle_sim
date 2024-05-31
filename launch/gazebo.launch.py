@@ -50,14 +50,14 @@ def generate_launch_description():
         output="screen",
     )
 
-    # joint_state_broadcaster controller
+    # joint_broad controller
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
         arguments=["joint_broad"],
     )
 
-    # bicycle_steering_controller controller
+    # bicycle_steering_cont controller
     bicycle_steering_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",

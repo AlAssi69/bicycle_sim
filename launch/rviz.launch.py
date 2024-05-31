@@ -29,7 +29,7 @@ def generate_launch_description():
         parameters=[{"robot_description": robot_description_raw}],
     )
 
-    # jsp gui
+    # jsp
     jsp_gui_node = Node(
         package="joint_state_publisher_gui",
         executable="joint_state_publisher_gui",
@@ -37,7 +37,7 @@ def generate_launch_description():
         arguments=[xacro_file],
     )
 
-    # rviz
+    # rviz2
     rviz2_node = Node(
         package="rviz2",
         executable="rviz2",
