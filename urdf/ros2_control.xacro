@@ -40,4 +40,5 @@
             <parameters>$(find bicycle_sim)/config/bicycle_controllers.yaml</parameters>
         </plugin>
     </gazebo>
+
 </robot>
