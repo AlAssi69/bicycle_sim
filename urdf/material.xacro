@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- MATERIAL COLOR -->
+    <!-- MATERIAL COLORS -->
     <material name="white">
         <color rgba="1 1 1 1" />
     </material>
