@@ -1,1 +1,1 @@
-This file is here only to get git to push the folder (src) to GitHub
+This file is here only to get git to push the folder to GitHub
