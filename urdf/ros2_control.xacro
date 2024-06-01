@@ -38,6 +38,7 @@
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
             <parameters>$(find bicycle_sim)/config/bicycle_controllers.yaml</parameters>
+            <parameters>$(find bicycle_sim)/config/gazebo_param.yaml</parameters>
         </plugin>
     </gazebo>
 

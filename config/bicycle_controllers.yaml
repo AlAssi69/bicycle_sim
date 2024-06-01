@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 1000 #too high
+    update_rate: 400.0 #too high
     use_sim_time: true
 
     bicycle_steering_cont:
