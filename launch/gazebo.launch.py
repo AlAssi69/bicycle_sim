@@ -17,6 +17,7 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_share_directory, urdf_path)
     robot_description_raw = xacro.process_file(xacro_file).toxml()
 
+    gazebo_param_file = os.path.join(pkg_share_directory, urdf_path)
     # rsp
     rsp_node = Node(
         package="robot_state_publisher",
@@ -30,6 +31,8 @@ def generate_launch_description():
     )
 
     # gazebo
+    param_file_path = "config/gazebo_param.yaml"
+    gazebo_param_file = os.path.join(pkg_share_directory, param_file_path)
     gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
@@ -40,6 +43,9 @@ def generate_launch_description():
                 ),
             ]
         ),
+        launch_arguments={
+            "extra_gazebo_args": "--ros-args --param-file " + gazebo_param_file
+        }.items(),
     )
 
     # Spawn URDF (the bicycle) service
