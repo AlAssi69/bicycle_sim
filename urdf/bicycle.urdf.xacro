@@ -54,7 +54,7 @@
     <!-- HEAD TUBE LINK -->
     <joint name="frame_head_joint" type="revolute">
         <axis xyz="1 0 0" />
-        <limit effort="10" lower="-1.570796327" upper="+1.570796327" velocity="10" />
+        <limit effort="100" lower="-1.570796327" upper="+1.570796327" velocity="10" />
         <parent link="frame" />
         <child link="head_tube" />
         <origin xyz="0 ${wheel_separation/2} 0" rpy="0 ${pi/2} 0" />
