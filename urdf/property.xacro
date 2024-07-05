@@ -2,6 +2,7 @@
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- XACRO PROPERTIES -->
+    <!-- TODO: thickns wheels -->
     <xacro:property name="wheel_radius" value="0.25" />
     <xacro:property name="wheel_thickness" value="0.05" />
     <xacro:property name="wheel_separation" value="0.98" />
