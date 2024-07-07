@@ -12,12 +12,13 @@ pkg_share_directory = get_package_share_directory(pkg_name)
 
 
 def generate_launch_description():
+
+    # TODO: Add sim_mode argument to the launch file
     # Use xacro to process the file
     urdf_path = "urdf/bicycle.urdf.xacro"
     xacro_file = os.path.join(pkg_share_directory, urdf_path)
     robot_description_raw = xacro.process_file(xacro_file).toxml()
 
-    gazebo_param_file = os.path.join(pkg_share_directory, urdf_path)
     # rsp
     rsp_node = Node(
         package="robot_state_publisher",
@@ -31,11 +32,6 @@ def generate_launch_description():
     )
 
     # gazebo
-    gazebo_param_file = os.path.join(
-        get_package_share_directory(pkg_name),
-        "config",
-        "gazebo_params.yaml",
-    )
     gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
@@ -46,9 +42,6 @@ def generate_launch_description():
                 ),
             ]
         ),
-        launch_arguments={
-            "extra_gazebo_args": "--ros-args --params-file " + gazebo_param_file
-        }.items(),
     )
 
     # Spawn URDF (the bicycle) service
