@@ -29,7 +29,7 @@ def generate_launch_description():
         ],
     )
 
-    # TODO: Add the controller manager node here, and pass the URDF.
+    # TODO Add the controller manager node here, and pass the URDF.
     # Then pass tha .yaml file.
 
     # joint_broad controller

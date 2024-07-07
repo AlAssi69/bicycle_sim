@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- TODO: Add hardware interface plugin here, and configure it -->
+    <!-- TODO Add hardware interface plugin here, and configure it -->
     <xacro:unless value="$(arg sim_mode)">
 
     </xacro:unless>
@@ -45,7 +45,7 @@
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
             <parameters>$(find bicycle_sim)/config/bicycle_controllers.yaml</parameters>
-            <!-- TODO: You may have to git clone to src -->
+            <!-- TODO  You may have to git clone to src -->
             <!-- git clone -b humble https://github.com/ros-controls/gazebo_ros2_control -->
             <!-- <parameters>$(find bicycle_sim)/config/gazebo_sim_mode.yaml</parameters> -->
         </plugin>

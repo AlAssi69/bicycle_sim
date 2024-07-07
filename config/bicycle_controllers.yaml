@@ -1,7 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 30.0 #too high
-    use_sim_time: true # TODO: Set to false when using HI
+    use_sim_time: true # TODO Set to false when using HI
 
     bicycle_steering_cont:
       type: bicycle_steering_controller/BicycleSteeringController

@@ -13,7 +13,7 @@ pkg_share_directory = get_package_share_directory(pkg_name)
 
 def generate_launch_description():
 
-    # TODO: Add sim_mode argument to the launch file
+    # TODO Add sim_mode argument to the launch file
     # Use xacro to process the file
     urdf_path = "urdf/bicycle.urdf.xacro"
     xacro_file = os.path.join(pkg_share_directory, urdf_path)
