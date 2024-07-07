@@ -3,11 +3,11 @@ controller_manager:
     update_rate: 400.0 #too high
     use_sim_time: true
 
-    bicycle_steering_cont:
-      type: bicycle_steering_controller/BicycleSteeringController
-
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
+
+    bicycle_steering_cont:
+      type: bicycle_steering_controller/BicycleSteeringController
 
 bicycle_steering_cont:
   ros__parameters:
