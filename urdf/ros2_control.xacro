@@ -1,43 +1,54 @@
 <?xml version="1.0"?>
 <robot name="bicycle" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <ros2_control name="GazeboSystem" type="system">
-        <hardware>
-            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-        </hardware>
+    <!-- TODO: Add hardware interface plugin here, and configure it -->
+    <xacro:unless value="$(arg sim_mode)">
 
-        <joint name="frame_head_joint">
-            <command_interface name="position">
-                <param name="min">-1.570796327</param>
-                <param name="max">+1.570796327</param>
-            </command_interface>
+    </xacro:unless>
 
-            <state_interface name="position" />
-        </joint>
+    <xacro:if value="$(arg sim_mode)">
+        <ros2_control name="GazeboSystem" type="system">
+            <hardware>
+                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            </hardware>
 
-        <joint name="screw_front_wheel_joint">
-            <command_interface name="position">
-                <param name="min">-1.570796327</param>
-                <param name="max">+1.570796327</param>
-            </command_interface>
+            <joint name="frame_head_joint">
+                <command_interface name="position">
+                    <param name="min">-1.570796327</param>
+                    <param name="max">+1.570796327</param>
+                </command_interface>
 
-            <state_interface name="position" />
-        </joint>
+                <state_interface name="position" />
+            </joint>
 
-        <joint name="screw_back_wheel_joint">
-            <command_interface name="velocity">
-                <param name="min">-1</param>
-                <param name="max">+1</param>
-            </command_interface>
+            <joint name="screw_front_wheel_joint">
+                <command_interface name="position">
+                    <param name="min">-1.570796327</param>
+                    <param name="max">+1.570796327</param>
+                </command_interface>
 
-            <state_interface name="position" />
-            <state_interface name="velocity" />
-        </joint>
-    </ros2_control>
+                <state_interface name="position" />
+            </joint>
+
+            <joint name="screw_back_wheel_joint">
+                <command_interface name="velocity">
+                    <param name="min">-1</param>
+                    <param name="max">+1</param>
+                </command_interface>
+
+                <state_interface name="position" />
+                <state_interface name="velocity" />
+            </joint>
+        </ros2_control>
+    </xacro:if>
 
     <gazebo>
         <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
             <parameters>$(find bicycle_sim)/config/bicycle_controllers.yaml</parameters>
+            <!-- TODO: You may have to git clone to src -->
+            <!-- git clone -b humble https://github.com/ros-controls/gazebo_ros2_control -->
+            <!-- <parameters>$(find bicycle_sim)/config/gazebo_sim_mode.yaml</parameters> -->
         </plugin>
     </gazebo>
+
 </robot>
