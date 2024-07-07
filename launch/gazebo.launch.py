@@ -31,8 +31,11 @@ def generate_launch_description():
     )
 
     # gazebo
-    param_file_path = "config/gazebo_param.yaml"
-    gazebo_param_file = os.path.join(pkg_share_directory, param_file_path)
+    gazebo_param_file = os.path.join(
+        get_package_share_directory(pkg_name),
+        "config",
+        "gazebo_params.yaml",
+    )
     gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
@@ -43,6 +46,9 @@ def generate_launch_description():
                 ),
             ]
         ),
+        launch_arguments={
+            "extra_gazebo_args": "--ros-args --params-file " + gazebo_param_file
+        }.items(),
     )
 
     # Spawn URDF (the bicycle) service
@@ -73,7 +79,7 @@ def generate_launch_description():
             rsp_node,
             gazebo_node,
             spawn_entity,
-            # joint_broad_spawner,
-            # bicycle_steering_controller_spawner,
+            joint_broad_spawner,
+            bicycle_steering_controller_spawner,
         ]
     )
